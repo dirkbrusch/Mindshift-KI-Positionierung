@@ -1,0 +1,1519 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Mindshift KI — Positionierung 2026 · V21 — 6-Seiten-Kompakt</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================
+   MINDSHIFT KI — DESIGN SYSTEM V21
+   Basis: dossier-v15.html (Farben, Schriften, Layout 1:1)
+   Änderung nur: einheitliche Typo-Skala gegen Wildwuchs
+   ========================================================== */
+
+:root {
+    --midnight: #0A1628;
+    --navy: #0B3D91;
+    --gold: #B8935A;
+    --gold-light: #D4B675;
+    --gold-soft: #E8D9B8;
+    --burgundy: #7A1522;
+    --ink: #1A1A1A;
+    --smoke: #555555;
+    --ivory: #F6F2E9;
+    --cream: #FAF8F3;
+    --paper: #FFFFFF;
+}
+
+@page { size: A4; margin: 0; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+    background: var(--smoke);
+    font-family: 'Inter', sans-serif;
+    color: var(--ink);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+.page {
+    width: 210mm;
+    height: 297mm;
+    background: var(--cream);
+    page-break-after: always;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+.page:last-child { page-break-after: auto; }
+
+.page-body {
+    flex: 1 1 auto;
+    min-height: 0;
+    max-height: calc(297mm - 17mm);
+    padding: 22mm 20mm 0 20mm;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.page.cover,
+.page.invitation {
+    display: block;
+    padding: 0;
+}
+
+.serif {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+}
+
+/* Fußzeile — einheitlich auf allen Cream-Seiten */
+.page-footer {
+    flex: 0 0 auto;
+    margin: 0 20mm;
+    padding: 4mm 0 10mm 0;
+    border-top: 0.5px solid var(--gold);
+    background: var(--cream);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 8.5pt;
+    color: var(--smoke);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 10;
+}
+.page.cover .page-footer,
+.page.invitation .page-footer {
+    background: transparent;
+    border-top: none;
+}
+.page-footer .mark { display: none; }
+.page-footer .num {
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--gold);
+    font-size: 10pt;
+    letter-spacing: 0;
+}
+.page-footer::before {
+    content: "Gespräch vereinbaren · dirk.brusch@mindshift-ki.de";
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 10pt;
+    color: var(--midnight);     /* einheitlich mit Kopfzeile, besser lesbar */
+    text-transform: none;
+    letter-spacing: 0;
+    order: -1;
+}
+.page.cover .page-footer::before,
+.page.invitation .page-footer::before { content: none; }
+
+.gold-rule {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    border: none;
+}
+.gold-rule.wide { width: 100%; }
+.gold-rule.center { margin: 0 auto; }
+
+.label {
+    font-family: 'Inter', sans-serif;
+    font-size: 8.5pt;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+}
+
+/* =============== COVER — 1:1 wie V16 PDF =============== */
+.cover {
+    background: var(--midnight);
+    color: var(--ivory);
+    padding: 0;
+}
+.cover-inner {
+    padding: 22mm 22mm 22mm 22mm;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.cover-corner-rule {
+    position: absolute;
+    left: 22mm;
+    top: 22mm;
+    width: 40mm;
+    height: 1px;
+    background: var(--gold);
+}
+.cover-bottom-rule {
+    position: absolute;
+    right: 22mm;
+    bottom: 22mm;
+    width: 40mm;
+    height: 1px;
+    background: var(--gold);
+}
+.cover-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 4mm;
+    margin-bottom: 20mm;
+}
+.cover-brand img {
+    width: 55mm;
+    height: auto;
+    display: block;
+}
+.cover-meta {
+    text-align: right;
+    font-size: 8.5pt;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    line-height: 1.6;
+}
+.cover-meta .date { color: var(--gold-light); }
+
+.cover-middle {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.cover-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 8.5pt;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    line-height: 1.8;
+    text-align: center;
+    max-width: 150mm;
+    margin: 0 auto 10mm auto;
+    font-weight: 500;
+}
+
+.cover-headline-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12mm;
+}
+.cover-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 52pt;
+    line-height: 1.0;
+    color: var(--ivory);
+    margin: 0;
+    flex: 1;
+    text-align: left;
+    white-space: nowrap;
+    /* 4 Zeilen × 52pt × 1.0 = 208pt = 73.4mm */
+    height: 73.4mm;
+}
+.cover-title em {
+    color: var(--gold);
+    font-style: italic;
+    font-weight: 300;
+}
+
+.portrait-block {
+    width: 55mm;
+    flex-shrink: 0;
+    text-align: center;
+}
+.portrait-frame {
+    width: 55mm;
+    height: 73.4mm;  /* exakt synchron zu Headline */
+    border: 0.5mm solid var(--gold);
+    padding: 2mm;
+    background: var(--cream);
+    overflow: hidden;
+}
+.portrait-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    filter: saturate(0.88) contrast(1.02);
+}
+.portrait-caption {
+    font-family: 'Inter', sans-serif;
+    font-size: 8pt;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-top: 4mm;
+    font-weight: 500;
+}
+.portrait-role {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 10pt;
+    color: var(--gold);
+    margin-top: 1mm;
+}
+
+.cover-byline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 19pt;
+    line-height: 1.3;
+    color: var(--gold-light);
+    text-align: center;
+    margin-top: 20mm;
+}
+.cover-byline .gold { color: var(--gold); }
+
+/* =============== INNER PAGE HEAD (alle Cream-Seiten) =============== */
+.page-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 6mm;
+    border-bottom: 0.5px solid var(--gold);
+    margin-bottom: 12mm;
+}
+.page-head .section {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13pt;
+    color: var(--midnight);   /* Druckkontrast: dunkel statt gold */
+}
+.page-head .brand {
+    font-size: 8.5pt;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--smoke);
+}
+.logo-inline {
+    width: 38mm;          /* deutlich sichtbarer (vorher 28mm) */
+    height: auto;
+    display: block;
+}
+
+/* =============== HERO / CHAPTER TITLES (einheitlich) =============== */
+h1.chapter-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 32pt;       /* dokumentweit einheitlich */
+    line-height: 1.1;
+    color: var(--midnight);
+    letter-spacing: -0.01em;
+    margin: 0 0 6mm 0;
+}
+h1.chapter-title em {
+    font-style: italic;
+    color: var(--burgundy);
+}
+
+/* Lede (Intro-Absatz nach Hero) */
+p.lede {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14pt;
+    line-height: 1.5;
+    color: var(--ink);
+    margin-bottom: 6mm;
+    max-width: 160mm;
+}
+
+/* Body */
+p {
+    font-size: 10.5pt;
+    line-height: 1.55;
+    color: var(--ink);
+    margin-bottom: 3mm;
+}
+strong { font-weight: 600; color: var(--ink); }
+em { font-style: italic; color: var(--burgundy); }
+
+/* =============== SEITE 11 · INVITATION (Dark) =============== */
+.invitation {
+    background: var(--midnight);
+    color: var(--ivory);
+}
+.invitation-inner {
+    padding: 30mm 22mm 18mm 22mm;   /* Content rückt nach unten, Lücke zu Kontakt schrumpft */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+.invitation-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 5mm;
+    border-bottom: 0.5px solid var(--gold);
+    margin-bottom: 8mm;
+}
+.invitation-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13pt;
+    color: var(--gold);
+}
+.invitation-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 32pt;
+    line-height: 1.1;
+    color: var(--ivory);
+    margin: 0 0 6mm 0;
+    letter-spacing: -0.01em;
+}
+.invitation-title em {
+    font-style: italic;
+    color: var(--gold);
+}
+.invitation-body {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15pt;
+    line-height: 1.5;
+    color: var(--gold-light);
+    margin: 0 0 5mm 0;
+    max-width: 165mm;
+}
+.invitation-body em {
+    color: var(--gold);
+    font-style: italic;
+}
+.invitation-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14pt;
+    color: var(--gold);
+    line-height: 1.4;
+    padding: 1mm 0 1mm 8mm;
+    border-left: 2px solid var(--gold);
+    margin: 2mm 0 4mm 0;
+    max-width: 160mm;
+}
+.invitation-closing {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14pt;
+    color: var(--gold);
+    margin: 0 0 8mm 0;
+    line-height: 1.4;
+}
+.invitation-closing .strong-ivory {
+    color: var(--ivory);
+    font-style: normal;
+    font-weight: 500;
+}
+.invitation-aside {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11.5pt;
+    line-height: 1.45;
+    color: var(--gold-soft);
+    margin: 0 0 8mm 0;
+    padding: 3mm 4mm;
+    border-left: 1.5px solid var(--gold);
+    background: rgba(255, 255, 255, 0.03);
+}
+.invitation-aside em {
+    color: var(--gold);
+    font-style: italic;
+    font-weight: 500;
+}
+.invitation-rules {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3mm 8mm;
+    margin: 0 0 7mm 0;
+    padding: 4mm 0 5mm 0;
+    border-top: 0.5px solid var(--gold);
+    border-bottom: 0.5px solid var(--gold);
+}
+.invitation-rules .rules-head {
+    grid-column: 1 / -1;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 12pt;
+    color: var(--gold);
+    margin-bottom: 1mm;
+}
+.invitation-rules .rule {
+    font-family: 'Inter', sans-serif;
+    font-size: 9.5pt;
+    color: var(--ivory);
+    line-height: 1.45;
+}
+.invitation-rules .rule strong {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 12pt;
+    color: var(--gold-light);
+    display: block;
+    margin-bottom: 0.5mm;
+}
+.invitation-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6mm;
+    margin: 0 0 5mm 0;
+}
+.invitation-step {
+    border-top: 1px solid var(--gold);
+    padding-top: 3mm;
+}
+.invitation-step .step-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 11pt;
+    color: var(--gold);
+    margin-bottom: 1mm;
+}
+.invitation-step h5 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14pt;
+    color: var(--ivory);
+    font-weight: 400;
+    margin: 0 0 2mm 0;
+    line-height: 1.2;
+}
+.invitation-step p {
+    font-size: 10pt;
+    color: var(--gold-light);
+    line-height: 1.5;
+    margin: 0;
+}
+.audit-box {
+    padding: 3.5mm 5mm;
+    border: 0.5px solid var(--gold);
+    background: rgba(184, 147, 90, 0.06);
+    margin-bottom: 6mm;
+    font-family: 'Inter', sans-serif;
+    font-size: 10pt;
+    color: var(--ivory);
+    line-height: 1.5;
+}
+.audit-box .lead {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--gold-light);
+    margin-right: 2mm;
+    font-size: 11pt;
+}
+.audit-box .gold {
+    color: var(--gold);
+    font-weight: 500;
+}
+.invitation-contact {
+    margin-top: auto;
+    padding-top: 5mm;
+    border-top: 0.5px solid var(--gold);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.invitation-contact .author {
+    display: flex;
+    gap: 6mm;
+    align-items: center;
+}
+.invitation-contact .photo {
+    width: 30mm;
+    height: 30mm;
+    border-radius: 50%;
+    object-fit: cover;
+    background: var(--cream);
+    flex-shrink: 0;
+}
+.invitation-contact .name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18pt;
+    color: var(--ivory);
+    line-height: 1;
+    margin-bottom: 2mm;
+}
+.invitation-contact .role {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 12pt;
+    color: var(--gold);
+    margin-bottom: 2mm;
+}
+.invitation-contact .tag {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 11pt;
+    color: var(--gold-light);
+}
+.invitation-contact .details {
+    text-align: right;
+    font-family: 'Inter', sans-serif;
+    font-size: 10pt;
+    color: var(--gold-light);
+    line-height: 1.7;
+    letter-spacing: 0.04em;
+}
+
+/* =============== SEITE 10 · FRAGEN =============== */
+.questions {
+    margin-top: 3mm;
+}
+.question {
+    padding: 2.5mm 0 2.5mm 8mm;
+    border-left: 2px solid var(--gold);
+    margin-bottom: 3mm;
+}
+.question:last-child { margin-bottom: 0; }
+.question .q-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 11pt;
+    color: var(--gold);
+    margin-bottom: 1mm;
+    letter-spacing: 0.02em;
+}
+.question .q-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18pt;
+    line-height: 1.3;
+    color: var(--midnight);
+    margin: 0 0 2mm 0;
+}
+.question .q-hint {
+    font-family: 'Inter', sans-serif;
+    font-size: 10pt;
+    color: var(--ink);
+    line-height: 1.45;
+    margin: 0;
+}
+.questions-closing {
+    margin-top: 5mm;
+    padding-top: 4mm;
+    border-top: 0.5px solid var(--gold-soft);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13pt;
+    color: var(--burgundy);
+    line-height: 1.4;
+    text-align: center;
+}
+
+/* =============== SEITE 9 · ABSAGE =============== */
+.dodont {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8mm;
+    margin-top: 2mm;
+}
+.dodont .col-head {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14pt;
+    color: var(--burgundy);
+    margin-bottom: 2mm;
+    padding-bottom: 2mm;
+    border-bottom: 0.5px solid var(--gold);
+}
+.dodont .do .col-head { color: var(--midnight); }
+.dodont .item {
+    margin-bottom: 2.5mm;
+}
+.dodont .item:last-child { margin-bottom: 0; }
+.dodont .item h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 12pt;
+    color: var(--midnight);
+    margin: 0 0 0.5mm 0;
+    line-height: 1.2;
+}
+.dodont .item p {
+    font-size: 10pt;
+    line-height: 1.4;
+    color: var(--ink);
+    margin: 0;
+}
+.dodont-closing {
+    margin-top: 3mm;
+    padding-top: 2.5mm;
+    border-top: 0.5px solid var(--gold);
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 12pt;
+    color: var(--midnight);
+    line-height: 1.35;
+}
+.dodont-closing em { color: var(--burgundy); }
+
+/* =============== SEITE 8 · KOSTEN =============== */
+.cost-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4mm;
+    margin-top: 4mm;
+    margin-bottom: 5mm;
+}
+.cost-card {
+    padding: 4mm 5mm;
+    background: var(--ivory);
+    border-left: 2px solid var(--gold);
+}
+.cost-card .card-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 12pt;
+    color: var(--burgundy);
+    margin-bottom: 1mm;
+}
+.cost-card h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 14pt;
+    color: var(--midnight);
+    margin: 0 0 2mm 0;
+    line-height: 1.2;
+}
+.cost-card p {
+    font-size: 10pt;
+    line-height: 1.5;
+    color: var(--ink);
+    margin: 0;
+}
+.cost-final {
+    padding: 5mm 6mm;
+    background: var(--midnight);
+    color: var(--ivory);
+}
+.cost-final .card-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 12pt;
+    color: var(--gold);
+    margin-bottom: 1mm;
+}
+.cost-final h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 17pt;
+    color: var(--ivory);
+    margin: 0 0 2.5mm 0;
+    line-height: 1.2;
+}
+.cost-final p {
+    font-size: 10pt;
+    color: var(--gold-light);
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* =============== SEITE 7 · VORHER/NACHHER =============== */
+.value-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5mm;
+    margin: 2mm 0 5mm 0;
+}
+.value-card {
+    padding: 4mm 5mm;
+    background: var(--ivory);
+    border-left: 2px solid var(--gold);
+}
+.value-card.vorher { border-left-color: var(--burgundy); }
+.value-card .card-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 12pt;
+    color: var(--gold);
+    margin-bottom: 2mm;
+}
+.value-card.vorher .card-label { color: var(--burgundy); }
+.value-card p {
+    font-size: 10.5pt;
+    line-height: 1.5;
+    color: var(--ink);
+    margin: 0;
+}
+.kpi-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 4mm;
+    margin-bottom: 8mm;
+}
+.kpi {
+    text-align: center;
+    padding: 3mm 2mm;
+    border-top: 1px solid var(--gold);
+    border-bottom: 1px solid var(--gold);
+}
+.kpi .big {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28pt;
+    color: var(--burgundy);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    font-weight: 500;
+    font-variant-numeric: lining-nums;
+}
+.kpi .sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 7.5pt;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--smoke);
+    margin-bottom: 1.5mm;
+    line-height: 1;
+    font-weight: 500;
+}
+.kpi .label {
+    font-family: 'Inter', sans-serif;
+    font-size: 8.5pt;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--smoke);
+    margin-top: 2.5mm;
+    line-height: 1.4;
+    font-weight: 500;
+}
+.value-closing {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 15pt;
+    color: var(--burgundy);
+    line-height: 1.45;
+    margin: 0;
+    padding: 4mm 0 0 7mm;
+    border-left: 2px solid var(--gold);
+}
+
+/* =============== SEITE 6 · SECHS GRUNDSÄTZE =============== */
+.principles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8mm 12mm;
+    margin-top: 6mm;
+}
+.principle {
+    padding: 0;
+}
+.principle .num {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 20pt;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 2mm;
+}
+.principle h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 16pt;
+    color: var(--midnight);
+    margin: 0 0 2.5mm 0;
+    line-height: 1.15;
+    letter-spacing: -0.005em;
+}
+.principle p {
+    font-size: 10.5pt;
+    color: var(--ink);
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* =============== SEITE 5 · SHIFT =============== */
+/* Achsen-Leiste über dem SHIFT-Grid */
+.shift-axis {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2.5mm 0;
+    border-top: 0.5px solid var(--gold);
+    border-bottom: 0.5px solid var(--gold);
+    margin-top: 2mm;
+    font-family: 'Inter', sans-serif;
+    font-size: 9pt;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+}
+.shift-wave {
+    margin: 0 0 2mm 0;
+    max-width: 170mm;
+}
+.shift-wave svg { display: block; height: auto; width: 100%; }
+.shift-wave figcaption {
+    font-family: 'Inter', sans-serif;
+    font-size: 8pt;
+    color: var(--smoke);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 1.5mm;
+    font-weight: 500;
+}
+.shift-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 2mm;
+    margin-top: 3mm;
+}
+.shift-phase {
+    background: var(--ivory);
+    border-top: 2px solid var(--gold);
+    padding: 4mm 4mm 14mm 4mm;
+    position: relative;
+    height: 108mm;                /* feste Höhe: alle 5 identisch, genug Platz für längsten Text */
+    box-sizing: border-box;
+}
+.shift-phase .letter {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36pt;
+    line-height: 1;
+    color: var(--midnight);
+    font-weight: 500;
+}
+.shift-phase .name {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 12pt;
+    color: var(--burgundy);
+    margin: 1mm 0 3mm 0;
+}
+.shift-phase .desc {
+    font-size: 8.5pt;
+    line-height: 1.4;
+    color: var(--ink);
+    margin-bottom: 2.5mm;
+}
+.shift-phase .desc em { color: var(--burgundy); font-style: italic; }
+.shift-phase .werkzeug {
+    font-family: 'Inter', sans-serif;
+    font-size: 7.5pt;
+    line-height: 1.35;
+    color: var(--midnight);
+    margin: 2mm 0 2mm 0;
+    padding: 1.5mm 2mm;
+    background: var(--cream);
+    border-left: 1.5px solid var(--gold);
+}
+.shift-phase .werkzeug strong {
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-size: 6.5pt;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 0.5mm;
+}
+.shift-phase .tag {
+    position: absolute;
+    left: 4mm;
+    right: 4mm;
+    bottom: 4mm;
+    font-family: 'Inter', sans-serif;
+    font-size: 8pt;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding-top: 2.5mm;
+    border-top: 0.5px solid var(--gold-soft);
+    font-weight: 500;
+    line-height: 1.35;
+    text-align: left;
+}
+.shift-phase .tag .article {
+    display: block;           /* Artikel (DIE/DER) immer eigene Zeile */
+}
+.shift-closing {
+    margin-top: 3mm;
+    padding: 3mm 5mm;
+    background: var(--ivory);
+    border-left: 2px solid var(--burgundy);
+}
+.shift-closing p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 12.5pt;
+    color: var(--burgundy);
+    line-height: 1.35;
+    margin: 0;
+}
+
+/* =============== SEITE 4 · HALTUNG =============== */
+.manifest-claim {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 20pt;
+    line-height: 1.35;
+    color: var(--midnight);
+    padding: 2mm 0 2mm 8mm;
+    border-left: 2px solid var(--gold);
+    margin: 4mm 0 3mm 0;          /* enger an die Bullets */
+}
+.manifest-claim .accent { color: var(--burgundy); font-style: italic; }
+.manifest-bullets {
+    margin-top: 1mm;              /* Bullet-Block rückt nach oben */
+}
+.manifest-bullets .item {
+    display: grid;
+    grid-template-columns: 18mm 1fr;
+    gap: 4mm;
+    padding: 3mm 0;               /* straffer, damit alle 4 auf die Seite passen */
+    border-bottom: 0.5px solid var(--gold-soft);
+}
+.manifest-bullets .item:last-child { border-bottom: none; }
+.manifest-bullets .idx {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 20pt;
+    color: var(--gold);
+    line-height: 1;
+    padding-top: 1mm;
+}
+.manifest-bullets .txt {
+    font-size: 10.5pt;
+    line-height: 1.55;
+    color: var(--ink);
+}
+.manifest-bullets .txt strong {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 14pt;
+    color: var(--midnight);
+    margin-bottom: 1.5mm;
+    letter-spacing: -0.005em;
+}
+
+/* =============== SEITE 3 · ZAHLEN =============== */
+.numbers-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8mm 14mm;
+    margin-top: 4mm;
+}
+.numbers-foot {
+    margin-top: 6mm;
+    padding: 4mm 5mm;
+    background: var(--ivory);
+    border-left: 2px solid var(--gold);
+}
+.numbers-foot p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11.5pt;
+    line-height: 1.4;
+    color: var(--ink);
+}
+.numbers-foot p em {
+    color: var(--burgundy);
+    font-style: italic;
+}
+.numbers-foot-source {
+    margin-top: 2mm;
+    font-family: 'Inter', sans-serif;
+    font-size: 7.5pt;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--smoke);
+}
+.number-item {
+    border-top: 0.5px solid var(--gold);
+    padding-top: 4mm;
+}
+.number-item .big {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56pt;
+    line-height: 0.9;
+    color: var(--midnight);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+}
+.number-item .big .pct {
+    color: var(--gold);
+    font-weight: 400;
+}
+.number-item .caption {
+    font-size: 10.5pt;
+    color: var(--ink);
+    line-height: 1.5;
+    margin-top: 3mm;
+}
+.number-item .source {
+    font-family: 'Inter', sans-serif;
+    font-size: 8.5pt;
+    color: var(--smoke);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-top: 2.5mm;
+    font-weight: 500;
+}
+
+/* =============== SEITE 2 · PROLOG =============== */
+.statement-page .page-body {
+    padding: 22mm 24mm 0 24mm;
+}
+.statement-hero {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 32pt;       /* dokumentweit einheitlich */
+    line-height: 1.1;
+    color: var(--midnight);
+    letter-spacing: -0.01em;
+    margin: 2mm 0 5mm 0;
+}
+.statement-hero em {
+    font-style: italic;
+    color: var(--burgundy);
+}
+.prolog-body p {
+    font-size: 10.5pt;
+    line-height: 1.55;
+    color: var(--ink);
+    margin: 0 0 3.5mm 0;
+}
+.prolog-pull {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 18pt;
+    line-height: 1.35;
+    color: var(--burgundy);
+    padding: 1mm 0 1mm 7mm;
+    border-left: 2px solid var(--gold);
+    margin: 1mm 0 4mm 0;
+}
+.prolog-ivory {
+    background: var(--ivory);
+    padding: 4mm 5mm;
+    border-radius: 1mm;
+    margin: 0 0 4mm 0;
+}
+.prolog-ivory p { margin: 0; }
+.prolog-closing {
+    margin-top: 3mm;
+    padding-top: 2.5mm;
+    border-top: 0.5px solid var(--gold);
+}
+.prolog-closing .claim {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 15pt;
+    line-height: 1.25;
+    color: var(--burgundy);
+    margin: 0;
+}
+.prolog-body p { margin-bottom: 2.5mm; }
+.statement-page .prolog-pull { margin-bottom: 3mm; }
+.statement-page .prolog-ivory { padding: 3mm 5mm; margin-bottom: 3mm; }
+.prolog-closing .claim em { color: var(--burgundy); font-style: italic; }
+
+</style>
+</head>
+<body>
+
+<!-- ===================================================================
+     SEITE 1 · COVER — 1:1 wie V16 PDF
+     =================================================================== -->
+<section class="page cover">
+    <div class="cover-corner-rule"></div>
+    <div class="cover-bottom-rule"></div>
+
+    <div class="cover-inner">
+
+        <div class="cover-top">
+            <div class="cover-brand">
+                <img src="logo-dark.svg" alt="Mindshift KI — Mensch führt. KI folgt.">
+            </div>
+            <div class="cover-meta">
+                Positionierung<br>
+                <span class="date">April 2026</span>
+            </div>
+        </div>
+
+        <div class="cover-middle">
+
+            <div class="cover-label">
+                Für Vorstände und Geschäftsführer im deutschen Mittelstand,<br>
+                deren KI-Initiative nicht am Code scheitern wird.
+            </div>
+
+            <div class="cover-headline-row">
+                <h1 class="cover-title">Wir feiern<br>die Technik.<br>Und verlieren<br>die <em>Menschen.</em></h1>
+
+                <div class="portrait-block">
+                    <div class="portrait-frame">
+                        <img src="portrait-dirk.png" alt="Dirk Brusch">
+                    </div>
+                    <div class="portrait-caption">Dirk Brusch</div>
+                    <div class="portrait-role">Interim-Mandat für KI-Transformation</div>
+                </div>
+            </div>
+
+            <div class="cover-byline">
+                Business vor Technik. &nbsp;—&nbsp; <span class="gold">Mensch vor Business.</span>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ===================================================================
+     SEITE 2 · ZAHLEN — Die Rechnung für Stillstand
+     Budget: 906 Zeichen · großzügig · Hero 34pt natural wrap
+     =================================================================== -->
+<section class="page">
+    <div class="page-body">
+        <div class="page-head">
+            <div class="section">2 &nbsp;·&nbsp; Die Zahlen hinter der Angst</div>
+            <img src="logo-light.svg" alt="Mindshift KI" class="logo-inline">
+        </div>
+
+        <div class="label">Die Rechnung für Stillstand</div>
+
+        <h1 class="chapter-title" style="margin-top:3mm;">
+            In zwei Jahren wird KI nicht mehr <em>eingeführt</em>.<br>
+            Dann wird sie <em>vorausgesetzt</em>.
+        </h1>
+
+        <p class="lede">
+            Wer jetzt gestaltet, führt die nächste Dekade. Wer reagiert, verwaltet sie. Diese sechs Zahlen zeigen, warum die Mehrheit in der zweiten Gruppe landen wird — und warum Sie nicht müssen.
+        </p>
+
+        <div class="numbers-grid">
+            <div class="number-item">
+                <div class="big">74<span class="pct">%</span></div>
+                <div class="caption">aller Unternehmen schaffen keinen skalierbaren KI-Wert.</div>
+                <div class="source">BCG · 2025</div>
+            </div>
+            <div class="number-item">
+                <div class="big">84<span class="pct">%</span></div>
+                <div class="caption">der KI-Fehlschläge sind auf Führungsversagen zurückzuführen.</div>
+                <div class="source">RAND Corporation</div>
+            </div>
+            <div class="number-item">
+                <div class="big">95<span class="pct">%</span></div>
+                <div class="caption">der Organisationen verzeichnen keinen messbaren ROI aus KI-Einsätzen.</div>
+                <div class="source">Harvard · 2025 · „AI Workslop"</div>
+            </div>
+            <div class="number-item">
+                <div class="big">63<span class="pct">%</span></div>
+                <div class="caption">der KI-Herausforderungen sind menschliche Faktoren, keine technischen.</div>
+                <div class="source">Prosci</div>
+            </div>
+            <div class="number-item">
+                <div class="big">88<span class="pct">%</span></div>
+                <div class="caption">Ausfallrate bei der Skalierung: Nur 4 von 33 Prototypen erreichen Produktionsreife.</div>
+                <div class="source">IDC</div>
+            </div>
+            <div class="number-item">
+                <div class="big">39<span class="pct">%</span></div>
+                <div class="caption">weisen EBIT-Beitrag aus KI nach — obwohl 88 % sie nutzen.</div>
+                <div class="source">McKinsey · 2025</div>
+            </div>
+        </div>
+
+        <div class="numbers-foot">
+            <p>
+                Hinter jeder dieser Zahlen steht ein Mensch, kein Modell. <em>„Die rechte Hemisphäre verarbeitet das Warum — Liebe, Sinn, Zugehörigkeit. Wer das an die KI delegiert, organisiert Einsamkeit."</em>
+            </p>
+            <div class="numbers-foot-source">Arthur C. Brooks · Harvard Kennedy School</div>
+        </div>
+    </div>
+
+    <div class="page-footer">
+        <span class="mark"></span>
+        <span class="num">02</span>
+    </div>
+</section>
+
+
+<!-- ===================================================================
+     SEITE 3 · SHIFT — Das Symptombild (Fünf Bruchstellen)
+     Budget: 2033 Zeichen · Hero 32pt · 5 Phasen-Kästen · kritische Seite
+     VORGEZOGEN in V18: CEO erkennt erst Schmerz, dann Haltung
+     =================================================================== -->
+<section class="page">
+    <div class="page-body">
+        <div class="page-head">
+            <div class="section">3 &nbsp;·&nbsp; Das Symptombild</div>
+            <img src="logo-light.svg" alt="Mindshift KI" class="logo-inline">
+        </div>
+
+        <h1 class="chapter-title" style="margin-bottom: 3mm;">
+            Fünf Bruchstellen.<br>
+            Immer an den <em>gleichen</em> Punkten.<br>
+            Immer in der <em>gleichen</em> Reihenfolge.
+        </h1>
+
+        <p class="lede" style="margin-bottom: 3mm;">
+            KI-Transformationen scheitern nicht zufällig. Sie scheitern an einer von fünf immer gleichen Bruchstellen — und meistens an der <em>ersten</em>, die nicht adressiert wird.
+        </p>
+
+        <div class="shift-axis">
+            <span class="start">Anfang</span>
+            <span class="end">Gewohnheit</span>
+        </div>
+
+        <div class="shift-grid">
+            <div class="shift-phase">
+                <div class="letter">S</div>
+                <div class="name">Sichten</div>
+                <div class="desc">Die Organisation schaut auf das falsche Problem. Ein Tool wird gesucht, bevor der Engpass überhaupt benannt ist. Hier bricht fast jede zweite KI-Initiative — leise, bevor sie sichtbar wird.</div>
+                <div class="werkzeug"><strong>Werkzeug</strong>Engpass-Diagnose vor Tool-Auswahl. Erst die Frage, dann das Werkzeug.</div>
+                <div class="tag"><span class="article">Die</span>falsche Diagnose</div>
+            </div>
+            <div class="shift-phase">
+                <div class="letter">H</div>
+                <div class="name">Handeln</div>
+                <div class="desc">Piloten bleiben Piloten. Die ersten Erfolge stehen auf der Folie — aber nicht im Alltag. Die Organisation feiert das Proof, vergisst den Übergang. Hier verliert die Führung das erste Mal das Mandat.</div>
+                <div class="werkzeug"><strong>Werkzeug</strong>Reifegrad-Stufen statt Sprung. Suchmaschine → Arbeitspartner → Agent.</div>
+                <div class="tag"><span class="article">Der</span>Pilot-Tod</div>
+            </div>
+            <div class="shift-phase">
+                <div class="letter">I</div>
+                <div class="name">Integrieren</div>
+                <div class="desc">Die KI hängt <em>neben</em> der Arbeit, nicht <em>in</em> ihr. Rollen bleiben unklar, Prozesse unverändert. Mitarbeiter weichen zurück in die alte Welt — und wirken dort plötzlich langsamer als vorher.</div>
+                <div class="werkzeug"><strong>Werkzeug</strong>Kontext-Sandwich: Identität → Aufgabe → Ergebnis. KI <em>in</em> die Rolle, nicht daneben.</div>
+                <div class="tag"><span class="article">Der</span>Parallel&shy;betrieb</div>
+            </div>
+            <div class="shift-phase">
+                <div class="letter">F</div>
+                <div class="name">Fokussieren</div>
+                <div class="desc">Die Toolsammlung wächst schneller als die Beherrschung. Jede Abteilung hat ihren eigenen Assistenten. Keiner weiß mehr, was an welcher Stelle warum läuft. Die Aufsicht ist längst verloren.</div>
+                <div class="werkzeug"><strong>Werkzeug</strong>Playbooks statt Tool-Sammeln. Trigger, Inputs, Schritte, Ergebnis — verbindlich.</div>
+                <div class="tag"><span class="article">Der</span>Wildwuchs</div>
+            </div>
+            <div class="shift-phase">
+                <div class="letter">T</div>
+                <div class="name">Tragen</div>
+                <div class="desc">Nach dem Projekt kippt alles zurück. Sobald der Berater weg ist, fällt die Organisation in die alte Routine. Was bleibt, ist eine teure Erinnerung an einen Aufbruch, den niemand mehr lebt.</div>
+                <div class="werkzeug"><strong>Werkzeug</strong>Übergabe vor Abgang. Verantwortung im Haus, nicht in der Rechnung.</div>
+                <div class="tag"><span class="article">Der</span>Rückfall</div>
+            </div>
+        </div>
+
+        <div class="shift-closing">
+            <p>
+                An welcher dieser fünf Stellen steht Ihr Haus gerade?<br>
+                Sie wissen es, noch bevor Sie zu Ende gelesen haben.<br>
+                Und Sie wissen auch: Die nächste Bruchstelle kommt in der Reihenfolge oben.
+            </p>
+        </div>
+    </div>
+
+    <div class="page-footer">
+        <span class="mark"></span>
+        <span class="num">03</span>
+    </div>
+</section>
+
+
+<!-- ===================================================================
+     SEITE 4 · KOSTEN — Was es kostet, nichts zu tun
+     Budget: 1640 Zeichen · 4 Posten-Kästen + 1 Dark-Box
+     =================================================================== -->
+<section class="page">
+    <div class="page-body">
+        <div class="page-head">
+            <div class="section">4 &nbsp;·&nbsp; Was es kostet, nichts zu tun</div>
+            <img src="logo-light.svg" alt="Mindshift KI" class="logo-inline">
+        </div>
+
+        <h1 class="chapter-title">
+            Die <em>unbequeme</em> Seite der Rechnung, die niemand aufmacht.
+        </h1>
+
+        <p class="lede">
+            Über die Kosten einer KI-Einführung wird geredet. Über die Kosten, keine zu machen, fast nie. Dabei sind die unsichtbaren Kosten meistens die größeren — und sie stehen in keiner Budgetplanung. Fünf Posten, die trotzdem jeden Monat abgebucht werden.
+        </p>
+
+        <div class="cost-grid">
+            <div class="cost-card">
+                <div class="card-label">Der erste Posten</div>
+                <h4>Die besten Menschen<br>gehen leise.</h4>
+                <p>Wer wachsen will, bleibt nicht in einer Organisation, die ihm das Werkzeug der Zeit verwehrt. Die Ersten, die Sie leise verlassen, sind die Gestalter. Diejenigen, die bleiben, verwalten nur noch den Stillstand.</p>
+            </div>
+            <div class="cost-card">
+                <div class="card-label">Der zweite Posten</div>
+                <h4>Der Wettbewerb wird<br>unmerklich schneller.</h4>
+                <p>Nicht dramatisch schneller. Leise. Kundenantworten in Minuten statt Tagen. Angebote am selben Vormittag. Irgendwann spürbar. Nicht mehr einholbar.</p>
+            </div>
+            <div class="cost-card">
+                <div class="card-label">Der dritte Posten</div>
+                <h4>Was nicht geregelt ist,<br>geschieht trotzdem.</h4>
+                <p>Wer intern nichts anbietet, sorgt dafür, dass extern alles genutzt wird. Ohne Regeln. Ohne Protokoll. Ohne Verantwortlichkeit. Das Risiko ist im Haus — nur noch nicht auf der Tagesordnung.</p>
+            </div>
+            <div class="cost-card">
+                <div class="card-label">Der vierte Posten</div>
+                <h4>Die Führung verliert<br>unmerklich das Mandat.</h4>
+                <p>Wer bei der größten Veränderung seit dem Internet schweigt, wird nicht als Stratege wahrgenommen, sondern als jemand, der sie verschlafen hat. Das Selbstbild hält dagegen. Die Wirkung auf die Mannschaft nicht.</p>
+            </div>
+        </div>
+
+        <div class="cost-final">
+            <div class="card-label">Der fünfte Posten — und der teuerste.</div>
+            <h4>Das Fenster zum Gestalten schließt sich.</h4>
+            <p>In zwei Jahren wird KI nicht mehr „eingeführt". Dann wird sie vorausgesetzt — von Kunden, von Mitarbeitern, von Aufsicht. Wer jetzt beginnt, gestaltet. Wer in zwei Jahren beginnt, reagiert.</p>
+        </div>
+    </div>
+
+    <div class="page-footer">
+        <span class="mark"></span>
+        <span class="num">04</span>
+    </div>
+</section>
+
+
+<!-- ===================================================================
+     SEITE 5 · FALLSTUDIE — Was sich verändert
+     Budget: 1482 Zeichen · Hero 32pt · 2 Spalten + 3 KPIs + Closing
+     =================================================================== -->
+<section class="page">
+    <div class="page-body">
+        <div class="page-head">
+            <div class="section">5 &nbsp;·&nbsp; Was sich verändert</div>
+            <img src="logo-light.svg" alt="Mindshift KI" class="logo-inline">
+        </div>
+
+        <h1 class="chapter-title">
+            Zwölf Monate später.<br>
+            Derselbe Raum. <em>Andere</em> Geschichte.
+        </h1>
+
+        <p class="lede">
+            Was folgt, ist keine Versprechens-Tabelle. Es ist eine anonymisierte Rückblende aus einer tatsächlichen Begleitung — ein Unternehmen im produzierenden Mittelstand, rund 420 Mitarbeiter. Ein Jahr vorher saßen wir gemeinsam im selben Konferenzraum, in dem heute dieser Text entsteht.
+        </p>
+
+        <div class="value-cards">
+            <div class="value-card vorher">
+                <div class="card-label">Vor zwölf Monaten</div>
+                <p>Im Meeting saß der Personalleiter schweigend. Die KI-Initiative war beschlossen, die Tools ausgewählt, das Budget bewilligt. Niemand im Raum wusste, wer sie eigentlich trug. Zwei Türen weiter schrieb eine Sachbearbeiterin ihre dritte Erklärungs-Mail des Tages — niemand hatte ihr den neuen Assistenten erklärt. Sie hat ihn nie benutzt.</p>
+            </div>
+            <div class="value-card heute">
+                <div class="card-label">Heute</div>
+                <p>Derselbe Personalleiter spricht als Erster. Bevor über das nächste Werkzeug entschieden wird, legt er drei Fragen auf den Tisch — die dritte lautet: <em>„Wer im Haus hat davor gerade Angst?"</em> Der Vorstand antwortet. Dieselbe Sachbearbeiterin erklärt heute ihren Kolleginnen, wie sie den Assistenten lenkt. Sie hat ihm einen Namen gegeben.</p>
+            </div>
+        </div>
+
+        <div class="kpi-row">
+            <div class="kpi">
+                <div class="big">–38 %</div>
+                <div class="label">Durchlaufzeit<br>im Kernprozess</div>
+            </div>
+            <div class="kpi">
+                <div class="sub">vorher 11 Monate</div>
+                <div class="big">3 Monate</div>
+                <div class="label">bis zur ersten<br>spürbaren Wirkung</div>
+            </div>
+            <div class="kpi">
+                <div class="big">0</div>
+                <div class="label">Kündigungen<br>in Schlüsselrollen</div>
+            </div>
+        </div>
+
+        <p class="value-closing">
+            Was sich wirklich verändert hat, steht auf keiner dieser Zahlen. Es ist die Stille, die vorher im Konferenzraum war — und die heute weg ist. Weil die richtigen Leute jetzt sprechen. Und die richtigen Fragen gestellt werden, bevor das Werkzeug gekauft wird.
+        </p>
+    </div>
+
+    <div class="page-footer">
+        <span class="mark"></span>
+        <span class="num">05</span>
+    </div>
+</section>
+
+
+<!-- ===================================================================
+     SEITE 6 · INVITATION — Der nächste Schritt (Dark-Seite)
+     Budget: 1267 Zeichen · Title 32pt · 3 Steps · Audit-CTA · Kontakt
+     =================================================================== -->
+<section class="page invitation">
+    <div class="invitation-inner">
+        <div class="invitation-head">
+            <div class="invitation-label">6 &nbsp;·&nbsp; Der nächste Schritt</div>
+            <img src="logo-dark.svg" alt="Mindshift KI" class="logo-inline" style="width: 38mm;">
+        </div>
+
+        <h1 class="invitation-title">
+            Verwalten Sie den Stillstand —<br>
+            oder <em>reißen</em> Sie das Steuer herum?
+        </h1>
+
+        <p class="invitation-body">
+            Lassen Sie uns in <em>30 Minuten</em> klären, an welcher der fünf SHIFT-Bruchstellen Ihre KI-Initiative gerade steht — kostenlos, ohne Pitch.
+        </p>
+
+        <p class="invitation-closing">
+            Sie sind der Einzige, der diese Entscheidung trifft. <span class="strong-ivory">Sie.</span>
+        </p>
+
+        <p class="invitation-aside">
+            Was die KI an <em>Bits</em> abnimmt, gewinnen Sie an <em>Atomen</em> zurück — die Stunden mit den Menschen, die Ihnen wichtig sind. Das ist die eigentliche Rendite.
+        </p>
+
+        <div class="invitation-rules">
+            <div class="rules-head">Meine Arbeitsweise — auf einen Blick</div>
+            <div class="rule">
+                <strong>Mensch zuerst. Dann Geschäft. Dann Technik.</strong>
+                Drei Ebenen, eine Reihenfolge. Wer sie dreht, wird sie später teuer erklären.
+            </div>
+            <div class="rule">
+                <strong>Wirkung vor Aktivität.</strong>
+                Keine Phase wird abgeschlossen, bevor sie gewirkt hat. Was nicht wirkt, wird nicht fortgeführt.
+            </div>
+            <div class="rule">
+                <strong>Ein Verantwortlicher. Ein Netzwerk, das trägt.</strong>
+                Ich führe Ihr Vorhaben persönlich. Keine Subunternehmer-Kette. Ein Ensemble mit einem Dirigenten.
+            </div>
+            <div class="rule">
+                <strong>Keine Pakete. Preis nach Analyse.</strong>
+                Ich mache ein Angebot, das zu Ihrem Problem passt. Zuerst über Wert — erst danach über Preis.
+            </div>
+        </div>
+
+        <div class="invitation-steps">
+            <div class="invitation-step">
+                <div class="step-num">1.</div>
+                <h5>Das Erstgespräch</h5>
+                <p>30 Minuten per Videokonferenz. Sie beschreiben Ihre Lage. Ich höre zu und prüfe, ob eine Zusammenarbeit Sinn hat.</p>
+            </div>
+            <div class="invitation-step">
+                <div class="step-num">2.</div>
+                <h5>Das Vor-Assessment</h5>
+                <p>Strukturierter Fragenkatalog. Erstes Lagebild zu Engpässen, Bereitschaft und Datenlage. Kostenlos, verbindlich ausgewertet.</p>
+            </div>
+            <div class="invitation-step">
+                <div class="step-num">3.</div>
+                <h5>Das Angebot</h5>
+                <p>Ein Angebot, das zu Ihrer Lage passt — inhaltlich und im Aufwand. Dann entscheiden Sie.</p>
+            </div>
+        </div>
+
+        <div class="invitation-contact">
+            <div class="author">
+                <img src="portrait-dirk-invitation.png" alt="Dirk Brusch" class="photo">
+                <div>
+                    <div class="name">Dirk Brusch</div>
+                    <div class="role">Mindshift KI</div>
+                    <div class="tag">Mensch führt. KI folgt.</div>
+                </div>
+            </div>
+            <div class="details">
+                dirk.brusch@mindshift-ki.de<br>
+                mindshift-ki.de
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
